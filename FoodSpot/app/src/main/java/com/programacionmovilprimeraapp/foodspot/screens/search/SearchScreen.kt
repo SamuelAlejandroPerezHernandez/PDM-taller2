@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +25,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,12 +33,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import kotlinx.coroutines.delay
-
 
 @Composable
 fun Search(
-    goBack: () -> Unit
+    goBack: () -> Unit,
+    goToDetail: (Int) -> Unit
 ){
     val viewModel: SearchViewModel = viewModel()
 
@@ -62,7 +59,7 @@ fun Search(
         bottomBar = { SearchBottomBar() }
     ){
         innerPadding ->
-        SearchContent(innerPadding, searchText, changeTextFild, selectedRestaurant, loadRestaurantList)
+        SearchContent(innerPadding, searchText, changeTextFild, selectedRestaurant, loadRestaurantList, goToDetail)
     }
 }
 
@@ -72,7 +69,8 @@ fun SearchContent(
     searchText: String,
     changeTextFild: (String) -> Unit,
     selectedRestaurant: List<Restaurant>,
-    loadRestaurantList: () -> Unit
+    loadRestaurantList: () -> Unit,
+    goToDetail: (Int) -> Unit
 ){
     LazyColumn(
         modifier = Modifier
@@ -111,7 +109,7 @@ fun SearchContent(
         items(selectedRestaurant){
             restaurante ->
             Card(
-                onClick = {},
+                onClick = { goToDetail(restaurante.id) },
                 modifier = Modifier
                     .width(250.dp)
                     .padding(horizontal = 12.dp, vertical = 8.dp)
