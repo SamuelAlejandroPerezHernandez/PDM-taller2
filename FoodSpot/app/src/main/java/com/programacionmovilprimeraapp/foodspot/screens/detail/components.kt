@@ -26,3 +26,80 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DetailTopAppBar(
+    goBack: () -> Unit
+){
+    TopAppBar(
+        title = {},
+
+        navigationIcon = {
+            IconButton(
+                onClick = { goBack() },
+                modifier = Modifier
+                    .size(40.dp)
+            ){
+                Icon(
+                    imageVector = Icons.Rounded.ArrowBackIosNew,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier
+                        .fillMaxSize()
+                )
+            }
+        },
+
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color.Black
+        )
+    )
+}
+
+@Composable
+fun DetailBottomBar(){
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Black)
+            .windowInsetsPadding(WindowInsets.navigationBars)
+            .padding(top = 25.dp, bottom = 40.dp)
+    ){
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            IconButton(
+                onClick = {},
+                modifier = Modifier
+                    .size(30.dp)
+            ){
+                Icon(
+                    imageVector = Icons.Rounded.Home,
+                    contentDescription = "home",
+                    tint = Color.White,
+                    modifier = Modifier
+                        .fillMaxSize()
+                )
+            }
+
+            IconButton(
+                onClick = {},
+                modifier = Modifier
+                    .size(30.dp)
+            ){
+                Icon(
+                    imageVector = Icons.Rounded.Search,
+                    contentDescription = "home",
+                    tint = Color.White,
+                    modifier = Modifier
+                        .fillMaxSize()
+                )
+            }
+
+
+        }
+    }
+}
