@@ -11,7 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-
+import com.programacionmovilprimeraapp.foodspot.navigation.NavigationWrapper
+import com.programacionmovilprimeraapp.foodspot.screens.home.Home
 import com.programacionmovilprimeraapp.foodspot.ui.theme.FoodSpotTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
+            NavigationWrapper()
         }
     }
 }
