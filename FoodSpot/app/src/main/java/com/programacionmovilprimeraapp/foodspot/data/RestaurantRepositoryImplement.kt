@@ -11,7 +11,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Pomodoro",
             "Restaurante italiano elegante con pizzas artesanales, pastas y recetas tradicionales italianas.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTprJgiFSDSDAzhDX-H1JQzISC9tw7TkdG6cg&s",
-            listOf("italiana"),
+            listOf("Italiana"),
             listOf<Dish>(
                 Dish(
                     1,
@@ -48,7 +48,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Monterosso Trattoria",
             "Trattoria moderna con comida italiana gourmet y ambiente elegante.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC70MvRrrLv15mleFK1M8bK7XP4aXpZ_fWOQ&s",
-            listOf("italiana"),
+            listOf("Italiana"),
             listOf<Dish>(
 
                 Dish(
@@ -86,7 +86,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Basilico Italian Bistro",
             "Bistro italiano moderno con pizzas y cocina mediterránea.",
             "https://cdn.theeventus.com/01J71ZBJGKPYNRF5DN7669PDDK.png",
-            listOf("italiana"),
+            listOf("Italiana"),
             listOf<Dish>(
 
                 Dish(
@@ -124,7 +124,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "La Dolce Vita",
             "Restaurante italiano familiar con recetas artesanales.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRP1tVds7wM72AzPjcqEHW39BdE3TAwDOUOw&s",
-            listOf("italiana"),
+            listOf("Italiana"),
             listOf<Dish>(
 
                 Dish(
@@ -162,7 +162,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Dynasty",
             "Restaurante chino tradicional con comida oriental clásica.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfFMBZz_osykLv-rR0okWL_m9lmolf76zGeA&s",
-            listOf("china"),
+            listOf("China"),
             listOf<Dish>(
 
                 Dish(
@@ -200,7 +200,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Pekin City",
             "Restaurante chino popular con especialidades asiáticas.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-LS_mgZTfXtipBGVY1Xg40ZwmJ1-1KldpVg&s",
-            listOf("china"),
+            listOf("China"),
             listOf<Dish>(
 
                 Dish(
@@ -238,7 +238,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Chinatown",
             "Comida china tradicional con gran variedad de platillos.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStDDeQzFUQxfZXiigP9UGr7bLNj5F22-d0pQ&s",
-            listOf("china"),
+            listOf("China"),
             listOf<Dish>(
 
                 Dish(
@@ -276,7 +276,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Golden Dragon",
             "Restaurante asiático con recetas tradicionales chinas.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb4nlPgU8FHIDGFDI02mNc7b95Rmks2tGqzA&s",
-            listOf("china"),
+            listOf("China"),
             listOf<Dish>(
 
                 Dish(
@@ -314,7 +314,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Seoul Garden",
             "Restaurante coreano especializado en BBQ y comida tradicional.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyl_Oij-VUalVnTrIQ7GnJTyEobY4TwlUQLA&s",
-            listOf("koreana"),
+            listOf("Coreana"),
             listOf<Dish>(
 
                 Dish(
@@ -352,7 +352,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Tae Guk Gi",
             "Comida coreana tradicional y street food asiática.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb3kIxzxm7I5faiuk-GM12gvIDu36NvuKj9A&s",
-            listOf("koreana"),
+            listOf("Coreana"),
             listOf<Dish>(
 
                 Dish(
@@ -390,7 +390,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "K-Food SV",
             "Restaurante moderno con auténtica comida coreana.",
             "https://www.shutterstock.com/image-vector/illustration-simple-modern-initial-k-260nw-1136964467.jpg",
-            listOf("koreana"),
+            listOf("Coreana"),
             listOf<Dish>(
 
                 Dish(
@@ -428,7 +428,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Hanbok Kitchen",
             "Sabores coreanos tradicionales y modernos.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8ofWgQyHDPXoiZfcDkHpiuPyTFFXl6cqiwg&s",
-            listOf("koreana"),
+            listOf("Coreana"),
             listOf<Dish>(
 
                 Dish(
@@ -466,7 +466,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "Burger King",
             "Cadena de comida rápida especializada en hamburguesas.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi1YUsojqPKLq9Z4Ey3w_TEJ-XZHA4Y4Jjuw&s",
-            listOf("Comida rapida"),
+            listOf("Comida Rapida"),
             listOf(
                 Dish(
                     50,
@@ -503,7 +503,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             "MCDonald´s",
             "Cadena internacional de hamburguesas y comida rápida.",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw8jO9eC3_62cmHaMI5eveXB2sPm53oHlM8A&s",
-            listOf("Comida rapida"),
+            listOf("Comida Rapida"),
             listOf<Dish>(
 
                 Dish(
@@ -540,8 +540,8 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             15,
             "Wendy's",
             "Restaurante de comida rápida famoso por sus hamburguesas.",
-            "https://static.wikia.nocookie.net/tomandjerry/images/4/48/Wendy%27s_logo.jpg/revision/latest?cb=20230721051143",
-            listOf("Comida rapida"),
+            "https://i.pinimg.com/474x/ea/47/76/ea47767d77c08926cdb3b6f4234de78f.jpg",
+            listOf("Comida Rapida"),
             listOf<Dish>(
 
                 Dish(
@@ -562,7 +562,7 @@ class RestaurantRepositoryImplement: RestaurantRepository{
                     60,
                     "Papas con Queso",
                     "Papas fritas con queso cheddar.",
-                    "https://borden-wordpress-s3.s3.amazonaws.com/wp-content/uploads/2024/05/Papas-fritas.jpg"
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe_KXx9odb4wOB2r-p5MX0Kg8iPgQLKlNa5w&s"
                 ),
 
                 Dish(
@@ -578,8 +578,8 @@ class RestaurantRepositoryImplement: RestaurantRepository{
             16,
             "KFC",
             "Cadena de pollo frito reconocida mundialmente.",
-            "https://www.franchise-focus.de/wp-content/uploads/2024/09/kfc_logo.png",
-            listOf("Comida rapida"),
+            "https://media.tenor.com/kkb548hIQfUAAAAe/kfc-logo.png",
+            listOf("Comida Rapida"),
             listOf<Dish>(
 
                 Dish(

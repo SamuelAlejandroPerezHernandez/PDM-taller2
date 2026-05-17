@@ -1,5 +1,6 @@
 package com.programacionmovilprimeraapp.foodspot.screens.search
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,6 +23,7 @@ import com.programacionmovilprimeraapp.foodspot.model.Restaurant
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -30,7 +32,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -43,8 +47,7 @@ fun Search(
 ){
     val viewModel: SearchViewModel = viewModel()
 
-    val selectedRestaurant by
-    viewModel.filteredName.collectAsState()
+    val selectedRestaurant by viewModel.filteredName.collectAsState()
 
     var searchText by rememberSaveable{mutableStateOf("")}
 
@@ -77,8 +80,9 @@ fun SearchContent(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(padding),
-        verticalArrangement = Arrangement.Center,
+            .padding(padding)
+            .background(Color(0xFF000103)),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         item{
@@ -98,12 +102,23 @@ fun SearchContent(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                Button(
-                    onClick = { loadRestaurantList() },
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
                 ){
-                    Text(text = "Buscar")
+                    Button(
+                        onClick = { loadRestaurantList() },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 30.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = Color(0xFFFF312E)
+                        )
+                    ){
+                        Text(text = "Buscar",
+                            fontSize = 20.sp,
+                            color = Color.White)
+                    }
                 }
             }
         }
@@ -111,11 +126,26 @@ fun SearchContent(
         if(selectedRestaurant.isEmpty()){
             item{
                 Text(
-                    text = "No se encontraron resultados"
-                )
+                    text = "No se encontraron resultados",
+                    fontSize = 20.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.ExtraBold,
+                    modifier = Modifier
+                        .padding(bottom = 14.dp))
             }
         }
         else{
+            item{
+                Text(
+                    text = "${selectedRestaurant.size} resultados encontrados",
+                    fontSize = 20.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.ExtraBold,
+                    modifier = Modifier
+                        .padding(bottom = 14.dp)
+                )
+            }
+
             items(selectedRestaurant){
                     restaurante ->
                 Card(
@@ -125,26 +155,27 @@ fun SearchContent(
                         .padding(horizontal = 12.dp, vertical = 8.dp),
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 6.dp
+                    ),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFF333138)
                     )
                 ){
                     Column(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp),
+                            .fillMaxWidth(),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
                         Box(
                             modifier = Modifier
-                                .width(200.dp)
-                                .height(200.dp)
+                                .width(250.dp)
+                                .height(250.dp)
                         ){
                             AsyncImage(
                                 model = restaurante.imageUrl,
                                 contentDescription = "restaurant image",
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                                    .fillMaxSize(),
                                 contentScale = ContentScale.Crop
                             )
                         }
@@ -154,7 +185,9 @@ fun SearchContent(
                         ) {
                             Text(
                                 text = restaurante.name,
-                                fontSize = 20.sp
+                                fontSize = 25.sp,
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
                             )
                         }
                     }

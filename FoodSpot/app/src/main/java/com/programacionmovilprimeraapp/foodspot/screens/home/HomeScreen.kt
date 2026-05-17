@@ -27,6 +27,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -64,7 +65,7 @@ fun HomeContent(
         modifier = Modifier
             .fillMaxSize()
             .padding(padding)
-            .background(Color.LightGray)
+            .background(Color(0xFF000103))
     ){
         items(filteredList){
                 (categoria, restaurante) ->
@@ -72,26 +73,34 @@ fun HomeContent(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 20.dp)
+                        .padding(horizontal = 16.dp, vertical = 28.dp)
                 ){
                     Text(text = categoria,
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold)
+                        fontSize = 28.sp,
+                        color = Color.White,
+                        fontWeight = FontWeight.ExtraBold,
+                        modifier = Modifier
+                            .padding(bottom = 14.dp)
+                    )
 
                     LazyRow(
                         modifier = Modifier
                             .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp),
+                        contentPadding = PaddingValues(horizontal = 4.dp)
                     ){
                         items(restaurante){
                             item ->
                             Card(
                                 onClick = { goToDetail(item.id) },
                                 modifier = Modifier
-                                    .width(180.dp)
-                                    .height(235.dp),
+                                    .width(200.dp)
+                                    .height(265.dp),
                                 elevation = CardDefaults.cardElevation(
                                     defaultElevation = 6.dp
+                                ),
+                                colors = CardDefaults.cardColors(
+                                    containerColor = Color(0xFF333138)
                                 )
                             ){
                                 Column(
@@ -103,22 +112,29 @@ fun HomeContent(
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .height(180.dp)
-                                    ){
+                                            .height(200.dp)
+                                        ){
                                         AsyncImage(
                                             model = item.imageUrl,
                                             contentDescription = "restaurant image",
                                             modifier = Modifier
-                                                .fillMaxSize()
-                                                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                                                .fillMaxSize(),
                                             contentScale = ContentScale.Crop,
 
                                         )
                                     }
 
-                                    Text(text = item.name,
-                                        fontSize = 20.sp,
-                                        fontWeight = FontWeight.Bold)
+                                    Box(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(vertical = 12.dp),
+                                        contentAlignment = Alignment.Center
+                                    ){
+                                        Text(text = item.name,
+                                            fontSize = 20.sp,
+                                            color = Color.White,
+                                            fontWeight = FontWeight.Bold)
+                                    }
                                 }
                             }
                         }

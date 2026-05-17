@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
@@ -46,7 +47,7 @@ fun Detail(
     restaurantId: Int,
     goBack: () -> Unit,
     goToHome: () -> Unit,
-    goToSearch: () -> Unit
+    goToSearch: () -> Unit,
 ){
     val viewModel: DetailViewModel = viewModel()
 
@@ -79,7 +80,7 @@ fun DetailContent(
         modifier = Modifier
             .fillMaxSize()
             .padding(padding)
-            .background(Color.LightGray)
+            .background(Color(0xFF000103))
     ){
         item{
             Column(
@@ -109,6 +110,7 @@ fun DetailContent(
 
                 Text(text = restaurant?.name.toString(),
                     fontSize = 24.sp,
+                    color = Color.White,
                     fontWeight = FontWeight.Bold)
 
                 Card(
@@ -118,11 +120,15 @@ fun DetailContent(
                     shape = RoundedCornerShape(20.dp),
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 6.dp
+                    ),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Color(0xFF333138)
                     )
                 ){
                     Text(text = restaurant?.description.toString(),
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
+                        color = Color.White,
                         modifier = Modifier
                             .padding(16.dp))
                 }
@@ -137,6 +143,9 @@ fun DetailContent(
                     .padding(horizontal = 12.dp, vertical = 8.dp),
                 elevation = CardDefaults.cardElevation(
                     defaultElevation = 6.dp
+                ),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color(0xFF333138)
                 )
             ){
                 Row(
@@ -147,8 +156,8 @@ fun DetailContent(
                 ){
                     Box(
                         modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp)
+                            .width(115.dp)
+                            .height(115.dp)
                     ){
                         AsyncImage(
                             model = item.imageUrl,
@@ -164,9 +173,17 @@ fun DetailContent(
                         verticalArrangement = Arrangement.Center
                     ){
                         Text(text = item.name,
+                            fontSize = 20.sp,
+                            color = Color.White,
                             fontWeight = FontWeight.Bold)
 
-                        Text(text = item.description)
+                        Spacer(modifier = Modifier.height(12.dp))
+
+                        Text(text = item.description,
+                            fontSize = 15.sp,
+                            color = Color.White)
+
+                        Spacer(modifier = Modifier.height(12.dp))
 
                         Button(
                             onClick = {
@@ -175,9 +192,14 @@ fun DetailContent(
                                     "${item.name} agregado al carrito",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                            }
+                            },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFFFF312E)
+                            )
                         ){
-                            Text(text = "Agregar a carrito")
+                            Text(text = "Agregar a carrito",
+                                fontSize = 15.sp,
+                                color = Color.White)
                         }
                     }
                 }

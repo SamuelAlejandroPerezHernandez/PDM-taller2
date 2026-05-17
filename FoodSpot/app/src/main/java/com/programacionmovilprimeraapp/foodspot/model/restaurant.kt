@@ -1,7 +1,7 @@
 package com.programacionmovilprimeraapp.foodspot.model
 
 data class Restaurant(
-    val id: Int,
+    var id: Int,
     val name: String,
     val description: String,
     val imageUrl: String,
