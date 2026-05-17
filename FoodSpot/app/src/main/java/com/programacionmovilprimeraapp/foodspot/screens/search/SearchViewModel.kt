@@ -11,11 +11,11 @@ import kotlinx.coroutines.launch
 
 class SearchViewModel: ViewModel(){
 
-    val repository: RestaurantRepository = RestaurantRepositoryImplement()
+    private val repository: RestaurantRepository = RestaurantRepositoryImplement()
 
-    val _restaurant = MutableStateFlow<List<Restaurant>>(emptyList())
+    private val _restaurant = MutableStateFlow<List<Restaurant>>(emptyList())
 
-    val _filteredList = MutableStateFlow<List<Restaurant>>(emptyList())
+    private val _filteredList = MutableStateFlow<List<Restaurant>>(emptyList())
     val filteredName = _filteredList.asStateFlow()
 
     init{

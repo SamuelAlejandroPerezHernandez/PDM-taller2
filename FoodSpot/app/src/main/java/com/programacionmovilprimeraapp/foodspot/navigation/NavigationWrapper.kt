@@ -39,6 +39,14 @@ fun NavigationWrapper(){
 
                     goBack = {
                         backStack.removeLastOrNull()
+                    },
+
+                    goToHome = {
+                        backStack.add(Routes.home)
+                    },
+
+                    goToSearch = {
+                        backStack.add(Routes.search)
                     }
                 )
             }
@@ -52,6 +60,10 @@ fun NavigationWrapper(){
                     goToDetail = {
                         restaurantId ->
                         backStack.add(Routes.detail(restaurantId))
+                    },
+
+                    goToHome = {
+                        backStack.add(Routes.home)
                     }
                 )
             }

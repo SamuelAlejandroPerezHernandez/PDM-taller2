@@ -57,7 +57,10 @@ fun DetailTopAppBar(
 }
 
 @Composable
-fun DetailBottomBar(){
+fun DetailBottomBar(
+    goToHome: () -> Unit,
+    goToSearch: () -> Unit
+){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -72,7 +75,7 @@ fun DetailBottomBar(){
             verticalAlignment = Alignment.CenterVertically
         ){
             IconButton(
-                onClick = {},
+                onClick = {goToHome()},
                 modifier = Modifier
                     .size(30.dp)
             ){
@@ -86,7 +89,7 @@ fun DetailBottomBar(){
             }
 
             IconButton(
-                onClick = {},
+                onClick = {goToSearch()},
                 modifier = Modifier
                     .size(30.dp)
             ){

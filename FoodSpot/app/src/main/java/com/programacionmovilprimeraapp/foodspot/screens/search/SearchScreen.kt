@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.setValue
@@ -37,7 +38,8 @@ import coil.compose.AsyncImage
 @Composable
 fun Search(
     goBack: () -> Unit,
-    goToDetail: (Int) -> Unit
+    goToDetail: (Int) -> Unit,
+    goToHome: () -> Unit
 ){
     val viewModel: SearchViewModel = viewModel()
 
@@ -56,7 +58,7 @@ fun Search(
 
     Scaffold(
         topBar = { SearchTopAppBar(goBack) },
-        bottomBar = { SearchBottomBar() }
+        bottomBar = { SearchBottomBar(goToHome) }
     ){
         innerPadding ->
         SearchContent(innerPadding, searchText, changeTextFild, selectedRestaurant, loadRestaurantList, goToDetail)
@@ -106,44 +108,55 @@ fun SearchContent(
             }
         }
 
-        items(selectedRestaurant){
-            restaurante ->
-            Card(
-                onClick = { goToDetail(restaurante.id) },
-                modifier = Modifier
-                    .width(250.dp)
-                    .padding(horizontal = 12.dp, vertical = 8.dp)
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
-            ){
-                Column(
+        if(selectedRestaurant.isEmpty()){
+            item{
+                Text(
+                    text = "No se encontraron resultados"
+                )
+            }
+        }
+        else{
+            items(selectedRestaurant){
+                    restaurante ->
+                Card(
+                    onClick = { goToDetail(restaurante.id) },
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .width(250.dp)
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 6.dp
+                    )
                 ){
-                    Box(
-                        modifier = Modifier
-                            .width(200.dp)
-                            .height(200.dp)
-                    ){
-                        AsyncImage(
-                            model = restaurante.imageUrl,
-                            contentDescription = "restaurant image",
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
-
                     Column(
-                        modifier = Modifier.padding(12.dp)
-                    ) {
-                        Text(
-                            text = restaurante.name,
-                            fontSize = 20.sp
-                        )
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        Box(
+                            modifier = Modifier
+                                .width(200.dp)
+                                .height(200.dp)
+                        ){
+                            AsyncImage(
+                                model = restaurante.imageUrl,
+                                contentDescription = "restaurant image",
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+
+                        Column(
+                            modifier = Modifier.padding(12.dp)
+                        ) {
+                            Text(
+                                text = restaurante.name,
+                                fontSize = 20.sp
+                            )
+                        }
                     }
                 }
             }

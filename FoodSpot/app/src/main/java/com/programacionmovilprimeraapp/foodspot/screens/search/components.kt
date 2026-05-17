@@ -60,7 +60,9 @@ fun SearchTopAppBar(
 }
 
 @Composable
-fun SearchBottomBar(){
+fun SearchBottomBar(
+    goToHome: () -> Unit
+){
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -75,7 +77,7 @@ fun SearchBottomBar(){
             verticalAlignment = Alignment.CenterVertically
         ){
             IconButton(
-                onClick = {},
+                onClick = {goToHome()},
                 modifier = Modifier
                     .size(30.dp)
             ){

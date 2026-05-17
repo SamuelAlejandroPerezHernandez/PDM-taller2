@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,7 +44,9 @@ import com.programacionmovilprimeraapp.foodspot.model.Restaurant
 @Composable
 fun Detail(
     restaurantId: Int,
-    goBack: () -> Unit
+    goBack: () -> Unit,
+    goToHome: () -> Unit,
+    goToSearch: () -> Unit
 ){
     val viewModel: DetailViewModel = viewModel()
 
@@ -57,7 +60,7 @@ fun Detail(
 
     Scaffold(
         topBar = { DetailTopAppBar(goBack) },
-        bottomBar = { DetailBottomBar() }
+        bottomBar = { DetailBottomBar(goToHome, goToSearch) }
     ){
         innerPadding ->
         DetailContent(innerPadding, dishList, restaurant)
@@ -107,6 +110,22 @@ fun DetailContent(
                 Text(text = restaurant?.name.toString(),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold)
+
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp),
+                    shape = RoundedCornerShape(20.dp),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 6.dp
+                    )
+                ){
+                    Text(text = restaurant?.description.toString(),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier
+                            .padding(16.dp))
+                }
             }
         }
 
@@ -115,8 +134,10 @@ fun DetailContent(
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 12.dp, vertical = 8.dp)
-                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp))
+                    .padding(horizontal = 12.dp, vertical = 8.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 6.dp
+                )
             ){
                 Row(
                     modifier = Modifier
@@ -142,7 +163,8 @@ fun DetailContent(
                     Column(
                         verticalArrangement = Arrangement.Center
                     ){
-                        Text(text = item.name)
+                        Text(text = item.name,
+                            fontWeight = FontWeight.Bold)
 
                         Text(text = item.description)
 

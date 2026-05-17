@@ -24,6 +24,7 @@ import com.programacionmovilprimeraapp.foodspot.model.Restaurant
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -45,6 +46,7 @@ fun Home(
     val filteredList = filteredCategory.toList()
 
     Scaffold(
+        topBar = { HomeTopAppBar(goToSearch) },
         bottomBar = { HomeBottomBar(goToSearch) }
     ){
             innerPadding ->
@@ -87,8 +89,10 @@ fun HomeContent(
                                 onClick = { goToDetail(item.id) },
                                 modifier = Modifier
                                     .width(180.dp)
-                                    .height(235.dp)
-                                    .clip(RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)),
+                                    .height(235.dp),
+                                elevation = CardDefaults.cardElevation(
+                                    defaultElevation = 6.dp
+                                )
                             ){
                                 Column(
                                     modifier = Modifier
